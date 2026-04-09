@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { supabase } from "./lib/supabase";
 
 const ACCENT = "#86f28f";
 const ACCENT_DIM = "#4a9940";
@@ -113,10 +114,33 @@ function WaitlistForm({ compact }) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (!email) return;
+
+    setLoading(true);
+    setErrorMsg("");
+
+    const { error } = await supabase
+      .from("waitlist")
+      .insert([{ email }]);
+
+    if (error) {
+      if (error.code === "23505") {
+        setErrorMsg("You're already on the list 🚀");
+      } else {
+        setErrorMsg("Something went wrong. Try again.");
+      }
+      setLoading(false);
+      return;
+    }
+
+    setSubmitted(true);
+    setEmail("");
+    setLoading(false);
   };
 
   if (submitted) {
@@ -136,48 +160,58 @@ function WaitlistForm({ compact }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-      <input
-        type="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        placeholder="your@email.com"
-        required
-        style={{
-          background: "rgba(134,242,143,0.04)",
-          border: `1px solid ${focused ? BORDER_MED : BORDER}`,
-          borderRadius: 8,
-          padding: compact ? "10px 14px" : "13px 18px",
-          color: "#e2f5e4",
-          fontSize: compact ? 13 : 14,
-          fontFamily: "'JetBrains Mono', monospace",
-          outline: "none",
-          width: compact ? 220 : 280,
-          transition: "border-color 0.2s",
-        }}
-      />
-      <button
-        type="submit"
-        style={{
-          background: ACCENT,
-          color: "#060e07",
-          border: "none",
-          borderRadius: 8,
-          padding: compact ? "10px 20px" : "13px 26px",
-          fontWeight: 700,
-          fontSize: compact ? 13 : 14,
-          cursor: "pointer",
-          fontFamily: "'JetBrains Mono', monospace",
-          letterSpacing: "0.05em",
-          transition: "opacity 0.15s",
-        }}
-        onMouseEnter={e => (e.target as HTMLButtonElement).style.opacity = "0.88"}
-        onMouseLeave={e => (e.target as HTMLButtonElement).style.opacity = "1"}
-      >
-        Join Waitlist →
-      </button>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          placeholder="your@email.com"
+          required
+          style={{
+            background: "rgba(134,242,143,0.04)",
+            border: `1px solid ${focused ? BORDER_MED : BORDER}`,
+            borderRadius: 8,
+            padding: compact ? "10px 14px" : "13px 18px",
+            color: "#e2f5e4",
+            fontSize: compact ? 13 : 14,
+            fontFamily: "'JetBrains Mono', monospace",
+            outline: "none",
+            width: compact ? 220 : 280,
+          }}
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          style={{
+            background: ACCENT,
+            color: "#060e07",
+            border: "none",
+            borderRadius: 8,
+            padding: compact ? "10px 20px" : "13px 26px",
+            fontWeight: 700,
+            fontSize: compact ? 13 : 14,
+            cursor: loading ? "not-allowed" : "pointer",
+            opacity: loading ? 0.7 : 1,
+            fontFamily: "'JetBrains Mono', monospace",
+          }}
+        >
+          {loading ? "Joining..." : "Join Waitlist →"}
+        </button>
+      </div>
+
+      {errorMsg && (
+        <span style={{
+          color: "#f87171",
+          fontSize: 12,
+          fontFamily: "'JetBrains Mono', monospace"
+        }}>
+          {errorMsg}
+        </span>
+      )}
     </form>
   );
 }
