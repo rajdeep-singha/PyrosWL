@@ -5,7 +5,7 @@ const installOptions = [
   {
     id: "bash",
     label: "Bash",
-    command: "curl -fsSL https://pyros.dev/install.sh | bash",
+    command: "curl -fsSL https://raw.githubusercontent.com/RudranshG07/pyros/main/install.sh | bash",
   },
   {
     id: "pip",
