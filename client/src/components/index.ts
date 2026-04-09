@@ -1,0 +1,12 @@
+export { Navbar } from "./Navbar";
+export { Hero } from "./Hero";
+export { TypewriterText } from "./TypewriterText";
+export { TerminalDemo } from "./TerminalDemo";
+export { WaitlistForm } from "./WaitlistForm";
+export { InstallCode } from "./InstallCode";
+export { Features } from "./Features";
+export { HowItWorks } from "./HowItWorks";
+export { WhyPyros } from "./WhyPyros";
+export { EarlyAccess } from "./EarlyAccess";
+export { Footer } from "./Footer";
+export { theme, globalStyles } from "./theme";
