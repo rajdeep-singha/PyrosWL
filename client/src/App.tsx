@@ -24,7 +24,9 @@ export default function PyrosWaitlist() {
   return (
     <div
       style={{
-        background: theme.colors.bgDark,
+        backgroundImage: "linear-gradient(rgba(134,242,143,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(134,242,143,0.05) 1px, transparent 1px)",
+        backgroundSize: "32px 32px",
+        backgroundColor: theme.colors.bgDark,
         color: "#c8f0cb",
         minHeight: "100vh",
         fontFamily: theme.fonts.sans,
