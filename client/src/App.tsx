@@ -36,14 +36,14 @@ export default function PyrosWaitlist() {
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, opacity: 0.4 }}>
           <EvilEye
             eyeColor="#86f28f"
-            intensity={0.8}
+            intensity={0.2}
             pupilSize={0.6}
             irisWidth={0.25}
             glowIntensity={0.35}
             scale={1.2}
             noiseScale={1}
             pupilFollow={1}
-            flameSpeed={0.5}
+            flameSpeed={0.2}
             backgroundColor="#0a1a0c"
           />
         </div>
