@@ -37,10 +37,13 @@ export function Features() {
   return (
     <section
       id="features"
-      style={{ padding: "80px 40px", borderTop: `1px solid ${theme.colors.border}` }}
+      style={{ 
+        padding: "clamp(48px, 8vw, 80px) clamp(16px, 4vw, 40px)", 
+        borderTop: `1px solid ${theme.colors.border}` 
+      }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 60 }}>
+        <div style={{ textAlign: "center", marginBottom: "clamp(32px, 6vw, 60px)" }}>
           <div
             style={{
               fontFamily: theme.fonts.mono,
@@ -54,22 +57,17 @@ export function Features() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 44px)",
+              fontSize: "clamp(24px, 5vw, 44px)",
               fontWeight: 600,
               color: theme.colors.textPrimary,
               letterSpacing: "-0.02em",
+              padding: "0 8px",
             }}
           >
             Everything your robot stack needs
           </h2>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 16,
-          }}
-        >
+        <div className="features-grid">
           {features.map((f) => (
             <div
               key={f.title}
@@ -78,7 +76,7 @@ export function Features() {
                 background: theme.colors.bgCard2,
                 border: `1px solid ${theme.colors.border}`,
                 borderRadius: 12,
-                padding: "28px 28px",
+                padding: "clamp(20px, 4vw, 28px)",
               }}
             >
               <div

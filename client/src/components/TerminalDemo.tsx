@@ -54,7 +54,7 @@ export function TerminalDemo() {
         border: `1px solid ${theme.colors.borderMed}`,
         borderRadius: 12,
         fontFamily: theme.fonts.mono,
-        fontSize: 13,
+        fontSize: "clamp(11px, 2.5vw, 13px)",
         lineHeight: 1.7,
         padding: "0",
         overflow: "hidden",
@@ -65,7 +65,7 @@ export function TerminalDemo() {
         style={{
           background: theme.colors.bgDark,
           borderBottom: `1px solid ${theme.colors.border}`,
-          padding: "10px 16px",
+          padding: "10px clamp(12px, 3vw, 16px)",
           display: "flex",
           alignItems: "center",
           gap: 8,
@@ -108,7 +108,7 @@ export function TerminalDemo() {
           pyros — bash
         </span>
       </div>
-      <div style={{ padding: "20px 24px", minHeight: 220 }}>
+      <div style={{ padding: "clamp(14px, 3vw, 20px) clamp(14px, 3vw, 24px)", minHeight: "clamp(180px, 30vw, 220px)", overflow: "auto" }}>
         {terminalLines.map((line, i) =>
           visible.includes(i) ? (
             <div

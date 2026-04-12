@@ -9,8 +9,8 @@ export function Hero() {
     <section
       className="grid-bg"
       style={{
-        paddingTop: 140,
-        paddingBottom: 100,
+        paddingTop: "clamp(100px, 15vw, 140px)",
+        paddingBottom: "clamp(60px, 10vw, 100px)",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -86,12 +86,13 @@ export function Hero() {
         <p
           className="hero-animate-3"
           style={{
-            fontSize: 18,
+            fontSize: "clamp(15px, 2.5vw, 18px)",
             color: theme.colors.textSecondary,
             lineHeight: 1.7,
             maxWidth: 560,
-            margin: "0 auto 44px",
+            margin: "0 auto clamp(28px, 5vw, 44px)",
             fontWeight: 300,
+            padding: "0 8px",
           }}
         >
           Pyros lives in your terminal and understands your entire robot stack —
@@ -134,12 +135,9 @@ export function Hero() {
         </div>
 
         <div
+          className="hero-stats"
           style={{
-            marginTop: 40,
-            display: "flex",
-            justifyContent: "center",
-            gap: 40,
-            flexWrap: "wrap",
+            marginTop: "clamp(24px, 5vw, 40px)",
           }}
         >
           {[

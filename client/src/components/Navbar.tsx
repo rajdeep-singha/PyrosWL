@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { theme } from "./theme";
 
 interface NavbarProps {
@@ -5,6 +6,8 @@ interface NavbarProps {
 }
 
 export function Navbar({ scrolled }: NavbarProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const navLinks = [
     { label: "Features", href: "#features" },
     { label: "How it works", href: "#how-it-works" },
@@ -19,13 +22,14 @@ export function Navbar({ scrolled }: NavbarProps) {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: scrolled ? "rgba(10,26,12,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled
-          ? `1px solid ${theme.colors.border}`
-          : "1px solid transparent",
+        background: scrolled || mobileMenuOpen ? "rgba(10,26,12,0.98)" : "transparent",
+        backdropFilter: scrolled || mobileMenuOpen ? "blur(12px)" : "none",
+        borderBottom:
+          scrolled || mobileMenuOpen
+            ? `1px solid ${theme.colors.border}`
+            : "1px solid transparent",
         transition: "all 0.3s",
-        padding: "0 40px",
+        padding: "0 clamp(16px, 4vw, 40px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -63,11 +67,13 @@ export function Navbar({ scrolled }: NavbarProps) {
         </span>
       </div>
 
-      <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+      {/* Desktop Navigation */}
+      <div className={`nav-links ${mobileMenuOpen ? "open" : ""}`}>
         {navLinks.map((link) => (
           <a
             key={link.label}
             href={link.href}
+            onClick={() => setMobileMenuOpen(false)}
             style={{
               color: "rgba(200,240,203,0.55)",
               fontSize: 14,
@@ -86,6 +92,7 @@ export function Navbar({ scrolled }: NavbarProps) {
         ))}
         <a
           href="#waitlist"
+          onClick={() => setMobileMenuOpen(false)}
           style={{
             background: "transparent",
             border: `1px solid ${theme.colors.borderMed}`,
@@ -97,6 +104,7 @@ export function Navbar({ scrolled }: NavbarProps) {
             fontFamily: theme.fonts.mono,
             fontWeight: 500,
             transition: "background 0.15s",
+            textAlign: "center",
           }}
           onMouseEnter={(e) =>
             ((e.target as HTMLElement).style.background =
@@ -109,6 +117,25 @@ export function Navbar({ scrolled }: NavbarProps) {
           Early Access
         </a>
       </div>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        className="nav-mobile-toggle"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        style={{
+          background: "transparent",
+          border: "none",
+          color: theme.colors.accent,
+          fontSize: 24,
+          cursor: "pointer",
+          padding: 8,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        aria-label="Toggle menu"
+      >
+        {mobileMenuOpen ? "✕" : "☰"}
+      </button>
     </nav>
   );
 }

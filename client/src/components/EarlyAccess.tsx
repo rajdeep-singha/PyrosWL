@@ -6,12 +6,12 @@ export function EarlyAccess() {
     <section
       id="waitlist"
       style={{
-        padding: "100px 40px",
+        padding: "clamp(60px, 10vw, 100px) clamp(16px, 4vw, 40px)",
         borderTop: `1px solid ${theme.colors.border}`,
         textAlign: "center",
       }}
     >
-      <div style={{ maxWidth: 640, margin: "0 auto" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 8px" }}>
         <div
           style={{
             fontFamily: theme.fonts.mono,
@@ -25,7 +25,7 @@ export function EarlyAccess() {
         </div>
         <h2
           style={{
-            fontSize: "clamp(32px, 5vw, 56px)",
+            fontSize: "clamp(28px, 6vw, 56px)",
             fontWeight: 600,
             color: theme.colors.textPrimary,
             letterSpacing: "-0.03em",
@@ -40,16 +40,16 @@ export function EarlyAccess() {
         <p
           style={{
             color: "rgba(200,240,203,0.5)",
-            fontSize: 17,
+            fontSize: "clamp(15px, 3vw, 17px)",
             lineHeight: 1.7,
-            marginBottom: 40,
+            marginBottom: "clamp(24px, 5vw, 40px)",
             fontWeight: 300,
           }}
         >
           We're opening access to a small group of robotics engineers first. Join
           the waitlist and shape the product.
         </p>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", padding: "0 8px" }}>
           <WaitlistForm />
         </div>
         <p

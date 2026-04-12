@@ -5,7 +5,7 @@ export function WhyPyros() {
     <section
       id="about"
       style={{
-        padding: "80px 40px",
+        padding: "clamp(48px, 8vw, 80px) clamp(16px, 4vw, 40px)",
         borderTop: `1px solid ${theme.colors.border}`,
         maxWidth: 1100,
         margin: "0 auto",
@@ -20,20 +20,14 @@ export function WhyPyros() {
             fontSize: 12,
             color: "rgba(134,242,143,0.5)",
             letterSpacing: "0.15em",
+            whiteSpace: "nowrap",
           }}
         >
           WHY PYROS
         </span>
         <div style={{ flex: 1, height: 1, background: theme.colors.border }} />
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 60,
-          alignItems: "center",
-        }}
-      >
+      <div className="why-grid">
         <div>
           <h2
             style={{
@@ -101,9 +95,10 @@ export function WhyPyros() {
             background: theme.colors.bgCard,
             border: `1px solid ${theme.colors.border}`,
             borderRadius: 16,
-            padding: 32,
+            padding: "clamp(20px, 4vw, 32px)",
             fontFamily: theme.fonts.mono,
-            fontSize: 13,
+            fontSize: "clamp(11px, 2.5vw, 13px)",
+            overflow: "auto",
           }}
         >
           {[

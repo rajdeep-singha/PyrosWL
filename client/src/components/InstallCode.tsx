@@ -42,6 +42,7 @@ export function InstallCode() {
         overflow: "hidden",
         maxWidth: 520,
         margin: "0 auto",
+        width: "100%",
       }}
     >
       {/* Tabs */}
@@ -58,7 +59,7 @@ export function InstallCode() {
             onClick={() => setActiveTab(opt.id)}
             style={{
               flex: 1,
-              padding: "10px 16px",
+              padding: "10px 8px",
               background:
                 activeTab === opt.id
                   ? "rgba(134,242,143,0.08)"
@@ -73,7 +74,7 @@ export function InstallCode() {
                   ? theme.colors.accent
                   : "rgba(200,240,203,0.5)",
               fontFamily: theme.fonts.mono,
-              fontSize: 12,
+              fontSize: "clamp(10px, 2.5vw, 12px)",
               fontWeight: 500,
               cursor: "pointer",
               transition: "all 0.15s",
@@ -90,14 +91,14 @@ export function InstallCode() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "16px 20px",
-          gap: 12,
+          padding: "clamp(12px, 3vw, 16px) clamp(12px, 3vw, 20px)",
+          gap: 8,
         }}
       >
         <code
           style={{
             fontFamily: theme.fonts.mono,
-            fontSize: 13,
+            fontSize: "clamp(11px, 2.5vw, 13px)",
             color: theme.colors.accent,
             flex: 1,
             overflow: "hidden",
@@ -114,15 +115,16 @@ export function InstallCode() {
             background: "rgba(134,242,143,0.1)",
             border: `1px solid ${theme.colors.border}`,
             borderRadius: 6,
-            padding: "6px 12px",
+            padding: "6px 10px",
             color: copied ? theme.colors.accent : "rgba(200,240,203,0.6)",
             fontFamily: theme.fonts.mono,
-            fontSize: 11,
+            fontSize: "clamp(10px, 2vw, 11px)",
             cursor: "pointer",
             transition: "all 0.15s",
             display: "flex",
             alignItems: "center",
-            gap: 6,
+            gap: 4,
+            flexShrink: 0,
           }}
         >
           {copied ? (

@@ -58,9 +58,9 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", gap: 10 }}
+      style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", maxWidth: 460 }}
     >
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
         <input
           type="email"
           value={email}
@@ -78,7 +78,9 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
             fontSize: compact ? 13 : 14,
             fontFamily: theme.fonts.mono,
             outline: "none",
-            width: compact ? 220 : 280,
+            flex: "1 1 200px",
+            minWidth: 0,
+            maxWidth: 280,
           }}
         />
 
@@ -96,6 +98,7 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
             cursor: loading ? "not-allowed" : "pointer",
             opacity: loading ? 0.7 : 1,
             fontFamily: theme.fonts.mono,
+            whiteSpace: "nowrap",
           }}
         >
           {loading ? "Joining..." : "Join Waitlist →"}

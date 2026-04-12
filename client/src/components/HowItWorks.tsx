@@ -22,10 +22,13 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      style={{ padding: "80px 40px", borderTop: `1px solid ${theme.colors.border}` }}
+      style={{ 
+        padding: "clamp(48px, 8vw, 80px) clamp(16px, 4vw, 40px)", 
+        borderTop: `1px solid ${theme.colors.border}` 
+      }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 64 }}>
+        <div style={{ textAlign: "center", marginBottom: "clamp(32px, 6vw, 64px)" }}>
           <div
             style={{
               fontFamily: theme.fonts.mono,
@@ -39,7 +42,7 @@ export function HowItWorks() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 44px)",
+              fontSize: "clamp(24px, 5vw, 44px)",
               fontWeight: 600,
               color: theme.colors.textPrimary,
               letterSpacing: "-0.02em",
@@ -48,18 +51,14 @@ export function HowItWorks() {
             Up and running in minutes
           </h2>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 1,
-            background: theme.colors.border,
-          }}
-        >
+        <div className="steps-grid">
           {steps.map((step, i) => (
             <div
               key={step.num}
-              style={{ background: theme.colors.bgDark, padding: "40px 36px" }}
+              style={{ 
+                background: theme.colors.bgDark, 
+                padding: "clamp(24px, 4vw, 40px) clamp(20px, 4vw, 36px)" 
+              }}
             >
               <div
                 style={{
