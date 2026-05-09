@@ -7,7 +7,6 @@ import { InstallCode } from "./InstallCode";
 export function Hero() {
   return (
     <section
-      className="grid-bg"
       style={{
         paddingTop: "clamp(100px, 15vw, 140px)",
         paddingBottom: "clamp(60px, 10vw, 100px)",

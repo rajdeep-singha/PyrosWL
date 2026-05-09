@@ -9,4 +9,5 @@ export { HowItWorks } from "./HowItWorks";
 export { WhyPyros } from "./WhyPyros";
 export { EarlyAccess } from "./EarlyAccess";
 export { Footer } from "./Footer";
+export { VideoBackgroundLayout } from "./VideoBackgroundLayout";
 export { theme, globalStyles } from "./theme";

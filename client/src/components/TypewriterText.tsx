@@ -30,7 +30,7 @@ export function TypewriterText() {
   // Typing animation
   useEffect(() => {
     const currentRole = roles[roleIndex];
-    let timeout: number;
+    let timeout: number | undefined;
 
     switch (phase) {
       case "typing":
@@ -39,7 +39,7 @@ export function TypewriterText() {
             setText(currentRole.slice(0, text.length + 1));
           }, TYPING_SPEED);
         } else {
-          setPhase("pausing");
+          timeout = window.setTimeout(() => setPhase("pausing"), 0);
         }
         break;
 
@@ -55,7 +55,7 @@ export function TypewriterText() {
             setText(text.slice(0, -1));
           }, DELETING_SPEED);
         } else {
-          setPhase("waiting");
+          timeout = window.setTimeout(() => setPhase("waiting"), 0);
         }
         break;
 
