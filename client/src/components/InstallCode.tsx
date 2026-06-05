@@ -5,17 +5,17 @@ const installOptions = [
   {
     id: "bash",
     label: "Bash",
-    command: "curl -fsSL https://raw.githubusercontent.com/RudranshG07/pyros/main/install.sh | bash",
+    command: "npm install -g pyros",
   },
   {
     id: "pip",
     label: "Python",
-    command: "pip install pyros-cli",
+    command: "PYROS_PYTHON=/usr/local/bin/python3.12 npm install -g pyros",
   },
   {
     id: "powershell",
     label: "PowerShell",
-    command: "irm https://pyros.dev/install.ps1 | iex",
+    command: "$env:PYROS_PYTHON='C:\\Python312\\python.exe'; npm install -g pyros",
   },
 ];
 

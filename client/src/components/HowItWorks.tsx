@@ -105,7 +105,7 @@ export function HowItWorks() {
                     border: `1px solid ${theme.colors.border}`,
                   }}
                 >
-                  pip install pyros-cli
+                  npm install -g pyros
                 </div>
               )}
             </div>
