@@ -38,7 +38,7 @@ export function TerminalDemo() {
 
   useEffect(() => {
     const timers = terminalLines.map((line, i) =>
-      setTimeout(() => setVisible((v) => [...v, i]), line.delay + 600)
+      setTimeout(() => setVisible((v) => [...v, i]), line.delay + 600),
     );
     const cursorTimer = setInterval(() => setCursor((c) => !c), 530);
     return () => {
@@ -59,6 +59,9 @@ export function TerminalDemo() {
         padding: "0",
         overflow: "hidden",
         boxShadow: `0 0 60px rgba(134,242,143,0.06), 0 0 0 1px ${theme.colors.border}`,
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <div
@@ -108,7 +111,16 @@ export function TerminalDemo() {
           pyros — bash
         </span>
       </div>
-      <div style={{ padding: "clamp(14px, 3vw, 20px) clamp(14px, 3vw, 24px)", minHeight: "clamp(180px, 30vw, 220px)", overflow: "auto" }}>
+      <div
+        style={{
+          padding: "clamp(14px, 3vw, 20px) clamp(14px, 3vw, 24px)",
+          flex: 1,
+          overflow: "auto",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         {terminalLines.map((line, i) =>
           visible.includes(i) ? (
             <div
@@ -122,7 +134,7 @@ export function TerminalDemo() {
             >
               {line.text}
             </div>
-          ) : null
+          ) : null,
         )}
         <span style={{ color: theme.colors.green, opacity: cursor ? 1 : 0 }}>
           █

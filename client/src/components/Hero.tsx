@@ -1,6 +1,7 @@
 import { theme } from "./theme";
 import { TypewriterText } from "./TypewriterText";
 import { TerminalDemo } from "./TerminalDemo";
+import { VideoPlayer } from "./VideoPlayer";
 import { WaitlistForm } from "./WaitlistForm";
 import { InstallCode } from "./InstallCode";
 
@@ -31,7 +32,7 @@ export function Hero() {
       />
       <div
         style={{
-          maxWidth: 800,
+          maxWidth: 1100,
           margin: "0 auto",
           padding: "0 24px",
           position: "relative",
@@ -101,16 +102,17 @@ export function Hero() {
 
         <div
           className="hero-animate-4"
-          style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: 40,
+          }}
         >
           <WaitlistForm />
         </div>
 
         {/* Install Code Block */}
-        <div
-          className="hero-animate-4"
-          style={{ marginBottom: 50 }}
-        >
+        <div className="hero-animate-4" style={{ marginBottom: 50 }}>
           <div
             style={{
               fontFamily: theme.fonts.mono,
@@ -126,11 +128,21 @@ export function Hero() {
           <InstallCode />
         </div>
 
+        {/* Video + Terminal — side by side, equal width */}
         <div
-          className="hero-animate-4"
-          style={{ maxWidth: 680, margin: "0 auto" }}
+          className="hero-animate-4 hero-demo-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 20,
+            maxWidth: 1040,
+            margin: "0 auto",
+            alignItems: "stretch",
+          }}
         >
           <TerminalDemo />
+          <VideoPlayer />
+          
         </div>
 
         <div
