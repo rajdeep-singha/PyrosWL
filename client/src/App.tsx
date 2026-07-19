@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Analytics } from '@vercel/analytics/react';
 import {
   Navbar,
   Hero,
@@ -39,6 +40,7 @@ export default function PyrosWaitlist() {
           <HowItWorks />
           <EarlyAccess />
           <Footer />
+          <Analytics />
         </div>
       </div>
     </VideoBackgroundLayout>
