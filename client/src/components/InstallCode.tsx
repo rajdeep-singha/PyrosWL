@@ -10,12 +10,7 @@ const installOptions = [
   {
     id: "pip",
     label: "Python",
-    command: "PYROS_PYTHON=/usr/local/bin/python3.12 npm install -g pyros",
-  },
-  {
-    id: "powershell",
-    label: "PowerShell",
-    command: "$env:PYROS_PYTHON='C:\\Python312\\python.exe'; npm install -g pyros",
+    command: "pip install pyros-robotics==2.0.0",
   },
 ];
 
