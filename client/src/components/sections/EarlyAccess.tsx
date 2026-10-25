@@ -1,5 +1,5 @@
-import { theme } from "./theme";
-import { WaitlistForm } from "./WaitlistForm";
+import { theme } from "@/styles/theme";
+import { WaitlistForm } from "@/components/forms/WaitlistForm";
 
 export function EarlyAccess() {
   return (
@@ -16,7 +16,7 @@ export function EarlyAccess() {
           style={{
             fontFamily: theme.fonts.mono,
             fontSize: 12,
-            color: "rgba(134,242,143,0.5)",
+            color: "rgba(91,194,231,0.5)",
             letterSpacing: "0.15em",
             marginBottom: 24,
           }}
@@ -33,21 +33,33 @@ export function EarlyAccess() {
             marginBottom: 20,
           }}
         >
-          Be first to ship
+          Your editor finally
           <br />
-          with Pyros
+          knows{" "}
+          <span
+            style={{
+              fontFamily: theme.fonts.serif,
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: theme.colors.accent,
+            }}
+          >
+            physics
+          </span>
+          .
         </h2>
         <p
           style={{
-            color: "rgba(200,240,203,0.5)",
+            color: "rgba(255,255,255,0.5)",
             fontSize: "clamp(15px, 3vw, 17px)",
             lineHeight: 1.7,
             marginBottom: "clamp(24px, 5vw, 40px)",
             fontWeight: 300,
           }}
         >
-          We're opening access to a small group of robotics engineers first. Join
-          the waitlist and shape the product.
+          We're opening access to a small group of robotics teams first. Join the
+          waitlist and help shape the IDE that designs, checks and ships real
+          hardware.
         </p>
         <div style={{ display: "flex", justifyContent: "center", padding: "0 8px" }}>
           <WaitlistForm />
@@ -56,7 +68,7 @@ export function EarlyAccess() {
           style={{
             marginTop: 20,
             fontSize: 12,
-            color: "rgba(200,240,203,0.25)",
+            color: "rgba(255,255,255,0.25)",
             fontFamily: theme.fonts.mono,
           }}
         >

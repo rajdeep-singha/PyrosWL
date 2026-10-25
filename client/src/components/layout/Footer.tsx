@@ -1,4 +1,4 @@
-import { theme } from "./theme";
+import { theme } from "@/styles/theme";
 
 export function Footer() {
   const socialLinks = ["Twitter", "GitHub", "Discord"];
@@ -12,28 +12,16 @@ export function Footer() {
     >
       <div className="footer-content">
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div
-            style={{
-              width: 24,
-              height: 24,
-              border: `1.5px solid rgba(134,242,143,0.4)`,
-              borderRadius: 6,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontFamily: theme.fonts.mono,
-              fontWeight: 700,
-              fontSize: 12,
-              color: "rgba(134,242,143,0.4)",
-            }}
-          >
-            P
-          </div>
+          <img
+            src="/logo.svg"
+            alt="Pyros"
+            style={{ width: 22, height: 22, display: "block", opacity: 0.8 }}
+          />
           <span
             style={{
               fontFamily: theme.fonts.mono,
               fontSize: 12,
-              color: "rgba(134,242,143,0.3)",
+              color: theme.colors.textMuted,
               letterSpacing: "0.1em",
             }}
           >
@@ -42,12 +30,12 @@ export function Footer() {
         </div>
         <span
           style={{
-            color: "rgba(200,240,203,0.2)",
+            color: "rgba(255,255,255,0.2)",
             fontSize: "clamp(10px, 2.5vw, 12px)",
             fontFamily: theme.fonts.mono,
           }}
         >
-          CLI-first AI agent for robotics engineers
+The robotics IDE that knows physics
         </span>
         <div style={{ display: "flex", gap: "clamp(16px, 3vw, 24px)" }}>
           {socialLinks.map((link) => (
@@ -55,7 +43,7 @@ export function Footer() {
               key={link}
               href="#"
               style={{
-                color: "rgba(200,240,203,0.25)",
+                color: "rgba(255,255,255,0.25)",
                 fontSize: 12,
                 textDecoration: "none",
                 fontFamily: theme.fonts.mono,
@@ -65,7 +53,7 @@ export function Footer() {
                 ((e.target as HTMLElement).style.color = theme.colors.accent)
               }
               onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.color = "rgba(200,240,203,0.25)")
+                ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.25)")
               }
             >
               {link}

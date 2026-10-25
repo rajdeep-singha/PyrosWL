@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Placeholder Pyros cube mark — replace with the official logo file.
+       Two interlocking isometric cubes with cyan / teal / indigo facets. -->
+  <g stroke="#EDEDED" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- top cube -->
+    <path d="M14 22 L24 16 L34 22 L24 28 Z" fill="#4A7C9B"/>
+    <path d="M14 22 L24 28 L24 40 L14 34 Z" fill="#0A0A0C"/>
+    <path d="M34 22 L24 28 L24 40 L34 34 Z" fill="#6B6B9E"/>
+    <!-- bottom cube -->
+    <path d="M30 30 L40 24 L50 30 L40 36 Z" fill="#5BC2E7"/>
+    <path d="M30 30 L40 36 L40 48 L30 42 Z" fill="#0A0A0C"/>
+    <path d="M50 30 L40 36 L40 48 L50 42 Z" fill="#4A7C9B"/>
+  </g>
+</svg>
