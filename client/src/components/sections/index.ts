@@ -1,0 +1,9 @@
+export { Hero } from "./Hero";
+export { ValueProp } from "./ValueProp";
+export { Ecosystem } from "./Ecosystem";
+export { ProductTour } from "./ProductTour";
+export { Trust } from "./Trust";
+export { Comparison } from "./Comparison";
+export { FAQ } from "./FAQ";
+export { EarlyAccess } from "./EarlyAccess";
+export { Updates } from "./Updates";

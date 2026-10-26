@@ -1,13 +1,9 @@
-export { Navbar } from "./Navbar";
-export { Hero } from "./Hero";
-export { TypewriterText } from "./TypewriterText";
-export { TerminalDemo } from "./TerminalDemo";
-export { WaitlistForm } from "./WaitlistForm";
-export { InstallCode } from "./InstallCode";
-export { Features } from "./Features";
-export { HowItWorks } from "./HowItWorks";
-export { WhyPyros } from "./WhyPyros";
-export { EarlyAccess } from "./EarlyAccess";
-export { Footer } from "./Footer";
-export { VideoBackgroundLayout } from "./VideoBackgroundLayout";
-export { theme, globalStyles } from "./theme";
+// Barrel: re-exports every component grouped by folder.
+export * from "./layout";
+export * from "./sections";
+export * from "./forms";
+export * from "./effects";
+export * from "./docs";
+
+// Theme tokens + global styles live under src/styles.
+export { theme, globalStyles } from "@/styles/theme";

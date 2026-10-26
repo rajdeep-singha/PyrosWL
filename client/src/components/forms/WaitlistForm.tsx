@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { supabase } from "../lib/supabase";
-import { theme } from "./theme";
+import { supabase } from "@/lib/supabase";
+import { theme } from "@/styles/theme";
 
 interface WaitlistFormProps {
   compact?: boolean;
@@ -44,7 +44,7 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
           display: "flex",
           alignItems: "center",
           gap: 10,
-          color: theme.colors.green,
+          color: theme.colors.accent,
           fontFamily: theme.fonts.mono,
           fontSize: compact ? 13 : 14,
         }}
@@ -70,11 +70,11 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
           placeholder="your@email.com"
           required
           style={{
-            background: "rgba(134,242,143,0.04)",
-            border: `1px solid ${focused ? theme.colors.borderMed : theme.colors.border}`,
+            background: "rgba(255,255,255,0.04)",
+            border: `1px solid ${focused ? theme.colors.borderAccent : theme.colors.border}`,
             borderRadius: 8,
             padding: compact ? "10px 14px" : "13px 18px",
-            color: "#e2f5e4",
+            color: theme.colors.textPrimary,
             fontSize: compact ? 13 : 14,
             fontFamily: theme.fonts.mono,
             outline: "none",
@@ -89,7 +89,7 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
           disabled={loading}
           style={{
             background: theme.colors.accent,
-            color: "#060e07",
+            color: "#001018",
             border: "none",
             borderRadius: 8,
             padding: compact ? "10px 20px" : "13px 26px",
@@ -108,7 +108,7 @@ export function WaitlistForm({ compact }: WaitlistFormProps) {
       {errorMsg && (
         <span
           style={{
-            color: "#f87171",
+            color: theme.colors.error,
             fontSize: 12,
             fontFamily: theme.fonts.mono,
           }}
