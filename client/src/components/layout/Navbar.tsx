@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { theme } from "./theme";
+import { Link } from "react-router-dom";
+import { theme } from "@/styles/theme";
 
 interface NavbarProps {
   scrolled: boolean;
@@ -8,10 +9,11 @@ interface NavbarProps {
 export function Navbar({ scrolled }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Prefixed with "/" so section anchors also work from /docs (navigate home, then scroll).
   const navLinks = [
-    { label: "Features", href: "#features" },
-    { label: "How it works", href: "#how-it-works" },
-    { label: "About", href: "#about" },
+    { label: "Features", href: "/#features" },
+    { label: "Compare", href: "/#compare" },
+    { label: "FAQ", href: "/#faq" },
   ];
 
   return (
@@ -22,7 +24,7 @@ export function Navbar({ scrolled }: NavbarProps) {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: scrolled || mobileMenuOpen ? "rgba(10,26,12,0.98)" : "transparent",
+        background: scrolled || mobileMenuOpen ? "rgba(0,0,0,0.9)" : "transparent",
         backdropFilter: scrolled || mobileMenuOpen ? "blur(12px)" : "none",
         borderBottom:
           scrolled || mobileMenuOpen
@@ -36,36 +38,32 @@ export function Navbar({ scrolled }: NavbarProps) {
         height: 64,
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <div
-          style={{
-            width: 32,
-            height: 32,
-            border: `1.5px solid ${theme.colors.accent}`,
-            borderRadius: 8,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontFamily: theme.fonts.mono,
-            fontWeight: 700,
-            fontSize: 16,
-            color: theme.colors.accent,
-          }}
-        >
-          P
-        </div>
+      <Link
+        to="/"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          textDecoration: "none",
+        }}
+      >
+        <img
+          src="/logo.svg"
+          alt="Pyros"
+          style={{ width: 30, height: 30, display: "block" }}
+        />
         <span
           style={{
             fontWeight: 600,
             fontSize: 16,
-            color: theme.colors.accent,
+            color: theme.colors.textPrimary,
             letterSpacing: "0.12em",
             fontFamily: theme.fonts.mono,
           }}
         >
           PYROS
         </span>
-      </div>
+      </Link>
 
       {/* Desktop Navigation */}
       <div className={`nav-links ${mobileMenuOpen ? "open" : ""}`}>
@@ -75,27 +73,46 @@ export function Navbar({ scrolled }: NavbarProps) {
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
             style={{
-              color: "rgba(200,240,203,0.55)",
+              color: theme.colors.textSecondary,
               fontSize: 14,
               textDecoration: "none",
               transition: "color 0.15s",
             }}
             onMouseEnter={(e) =>
-              ((e.target as HTMLElement).style.color = theme.colors.green)
+              ((e.target as HTMLElement).style.color = theme.colors.accent)
             }
             onMouseLeave={(e) =>
-              ((e.target as HTMLElement).style.color = "rgba(200,240,203,0.55)")
+              ((e.target as HTMLElement).style.color = theme.colors.textSecondary)
             }
           >
             {link.label}
           </a>
         ))}
+        <Link
+          to="/docs"
+          onClick={() => setMobileMenuOpen(false)}
+          style={{
+            color: theme.colors.textSecondary,
+            fontSize: 14,
+            textDecoration: "none",
+            transition: "color 0.15s",
+          }}
+          onMouseEnter={(e) =>
+            ((e.currentTarget as HTMLElement).style.color = theme.colors.accent)
+          }
+          onMouseLeave={(e) =>
+            ((e.currentTarget as HTMLElement).style.color =
+              theme.colors.textSecondary)
+          }
+        >
+          Docs
+        </Link>
         <a
-          href="#waitlist"
+          href="/#waitlist"
           onClick={() => setMobileMenuOpen(false)}
           style={{
             background: "transparent",
-            border: `1px solid ${theme.colors.borderMed}`,
+            border: `1px solid ${theme.colors.borderAccent}`,
             color: theme.colors.accent,
             padding: "7px 18px",
             borderRadius: 8,
@@ -108,7 +125,7 @@ export function Navbar({ scrolled }: NavbarProps) {
           }}
           onMouseEnter={(e) =>
             ((e.target as HTMLElement).style.background =
-              "rgba(134,242,143,0.08)")
+              "rgba(91,194,231,0.1)")
           }
           onMouseLeave={(e) =>
             ((e.target as HTMLElement).style.background = "transparent")

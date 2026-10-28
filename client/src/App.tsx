@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
-import { Analytics } from '@vercel/analytics/react';
-import {
-  Navbar,
-  Hero,
-  WhyPyros,
-  Features,
-  HowItWorks,
-  EarlyAccess,
-  Footer,
-  VideoBackgroundLayout,
-  theme,
-  globalStyles,
-} from "./components";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import { Background, Navbar, Footer, theme, globalStyles } from "@/components";
+import { LandingPage, DocsPage } from "@/pages";
 
 export default function PyrosWaitlist() {
   const [scrolled, setScrolled] = useState(false);
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -22,27 +14,31 @@ export default function PyrosWaitlist() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scroll to top on route change (unless navigating to an in-page anchor).
+  useEffect(() => {
+    if (!hash) window.scrollTo(0, 0);
+  }, [pathname, hash]);
+
   return (
-    <VideoBackgroundLayout>
-      <div
-        style={{
-          color: "#c8f0cb",
-          minHeight: "100vh",
-          fontFamily: theme.fonts.sans,
-        }}
-      >
-        <style>{globalStyles}</style>
-        <Navbar scrolled={scrolled} />
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <Hero />
-          <WhyPyros />
-          <Features />
-          <HowItWorks />
-          <EarlyAccess />
-          <Footer />
-          <Analytics />
-        </div>
+    <div
+      style={{
+        background: theme.colors.bg,
+        color: theme.colors.textPrimary,
+        minHeight: "100vh",
+        fontFamily: theme.fonts.sans,
+      }}
+    >
+      <style>{globalStyles}</style>
+      <Background />
+      <Navbar scrolled={scrolled} />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/docs" element={<DocsPage />} />
+        </Routes>
+        <Footer />
+        <Analytics />
       </div>
-    </VideoBackgroundLayout>
+    </div>
   );
 }
